@@ -30,38 +30,51 @@ Il recap dei dati e l'output del prezzo finale, andranno quindi stampati in pagi
 //output prezzo del biglietto con dati forniti dal prompt
 // debugger;
 
+//!!!DOM data
 //form 
 const form = document.getElementById('price-form');
 console.log(form);
 
 //parte di file html contenente l'id #user-age
-const ageInput = document.getElementById('user-age').value;
+const ageInput = document.getElementById('user-age');
 console.log(ageInput);
 
-//memorizzo l'eta' inserita dall'utente in una nuova variabile
-// const userAge = parseInt(Math.round(ageInput.value));
-// console.log(userAge);
-
-//devo trovare nella memoria del browser la parte di file html contenente l'id #trip-km 
+//parte di file html contenente l'id #trip-km 
 const kmDistanceInput = document.getElementById('trip-km');
 console.log(kmDistanceInput);
 
-//km inseriti dall'utente
-const userKm = parseFloat(Math.round(kmDistanceInput.value));
-console.log(userKm);
-
+//ricerca pulsante submit
 const submitBtn = document.getElementById('submit-btn');
 console.log(submitBtn);
 
-//prezzo finale
-// const outputPrice = getFinalPrice(userKm, userAge);
-// console.log(outputPrice);
+//ricerca spazio dedicato al messaggio da inviare all'utente
+const mesage = document.getElementById('message');
 
-// form.addEventListener('submit', function (event) {
-//   event.preventDefault();
-//   console.log('ciao');
-//   console.log(userAge, userKm);
-// });
+//event listener per bloccare il normale comportamento di submit ed eseguire calcolo prezzo finale con banner per utente
+
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  //memorizzo l'eta' inserita dall'utente in una nuova variabile
+  const userAge = parseInt(Math.round(ageInput.value));
+  console.log(userAge);
+
+
+  //km inseriti dall'utente
+  const userKm = parseFloat(Math.round(kmDistanceInput.value));
+  console.log(userKm);
+
+  const outputPrice = getFinalPrice(userKm, userAge);
+  console.log(outputPrice);
+
+  ageInput.value = '';
+  kmDistanceInput.value = '';
+
+  //banner utente gia' posizionato in pagina ma vuoto
+
+  // console.log('ciao');
+  // console.log(userAge, userKm);
+});
 
 
 

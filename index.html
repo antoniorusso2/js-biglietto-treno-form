@@ -21,18 +21,18 @@
     <section>
       <!-- form con informazioni da inserire per il calcolo del biglietto -->
       <div class="container">
-        <form action="" method="get">
+        <form id="price-form" action="" method="get">
           <div class="mb-3">
             <label for="user-age" class="form-label">Inserisci la tua eta'</label>
-            <input name="user-age" type="text" class="form-control" id="user-age">
+            <input value="" name="user-age" type="text" class="form-control" id="user-age">
           </div>
 
           <div class="mb-3">
             <label for="user-name" class="form-label">Inserisci i km da percorrere</label>
-            <input name="trip-km" type="text" class="form-control" id="trip-km">
+            <input value="" name="trip-km" type="text" class="form-control" id="trip-km">
           </div>
 
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button id="submit-btn" type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </section>

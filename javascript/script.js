@@ -28,20 +28,42 @@ Il recap dei dati e l'output del prezzo finale, andranno quindi stampati in pagi
 //ALTRIMENTI prezzo al km
 
 //output prezzo del biglietto con dati forniti dal prompt
+// debugger;
 
+//form 
+const form = document.getElementById('price-form');
+console.log(form);
 
-// let userAge = parseFloat(prompt('Benvenuto/a, per il calcolo del preventivo inserisci qui di sotto l\'eta\'del passeggero')); //number - trasferire come dato ricevuto dal form
-// // console.log(typeof userAge); //number
+//parte di file html contenente l'id #user-age
+const ageInput = document.getElementById('user-age').value;
+console.log(ageInput);
+
+//memorizzo l'eta' inserita dall'utente in una nuova variabile
+// const userAge = parseInt(Math.round(ageInput.value));
 // console.log(userAge);
 
-// //richiesta numero km da percorrere
-// //prompt richiesta distanza espressa in km
-// let tripDistance = parseFloat(prompt('Inserisci adesso la distanza del viaggio in KM')); //number
-// //console.log(typeof tripDistance); //number
-// console.log(tripDistance);
+//devo trovare nella memoria del browser la parte di file html contenente l'id #trip-km 
+const kmDistanceInput = document.getElementById('trip-km');
+console.log(kmDistanceInput);
 
-const outputPrice = getFinalPrice(tripDistance, userAge);
-console.log(userPrice);
+//km inseriti dall'utente
+const userKm = parseFloat(Math.round(kmDistanceInput.value));
+console.log(userKm);
+
+const submitBtn = document.getElementById('submit-btn');
+console.log(submitBtn);
+
+//prezzo finale
+// const outputPrice = getFinalPrice(userKm, userAge);
+// console.log(outputPrice);
+
+// form.addEventListener('submit', function (event) {
+//   event.preventDefault();
+//   console.log('ciao');
+//   console.log(userAge, userKm);
+// });
+
+
 
 //funzione calcolo sconto
 function getFinalPrice(km, age) {
@@ -61,8 +83,10 @@ function getFinalPrice(km, age) {
   // 3. prezzo base in base ai km
   if (age < 18) {
     discount = kmPrice * 20 / 100; //number
+    console.log(`sconto 20% = ${discount}`);
   } else if (age > 65) {
     discount = kmPrice * 40 / 100; // number 
+    console.log(`sconto 40% = ${discount}`);
   }
   else {
     discount = 0;

@@ -48,8 +48,8 @@ const submitBtn = document.getElementById('submit-btn');
 console.log(submitBtn);
 
 //ricerca spazio dedicato al messaggio da inviare all'utente
-const mesage = document.getElementById('message');
-
+const message = document.getElementById('message');
+console.log(message);
 //event listener per bloccare il normale comportamento di submit ed eseguire calcolo prezzo finale con banner per utente
 
 form.addEventListener('submit', function (event) {
@@ -71,7 +71,7 @@ form.addEventListener('submit', function (event) {
   kmDistanceInput.value = '';
 
   //banner utente gia' posizionato in pagina ma vuoto
-
+  message.innerText = `Il prezzo per il biglietto è pari a ${outputPrice} €`;
   // console.log('ciao');
   // console.log(userAge, userKm);
 });

@@ -47,9 +47,16 @@ console.log(kmDistanceInput);
 const submitBtn = document.getElementById('submit-btn');
 console.log(submitBtn);
 
-//ricerca spazio dedicato al messaggio da inviare all'utente
-const message = document.getElementById('message');
-console.log(message);
+//dati da inserire in elementi html
+const printAge = document.getElementById('print_age');
+const printKm = document.getElementById('print_km');
+const printDiscount = document.getElementById('print_discount');
+const printPrice = document.getElementById('print_price');
+
+
+//*append element
+// const messageSection = document.getElementById('message_section');
+
 //event listener per bloccare il normale comportamento di submit ed eseguire calcolo prezzo finale con banner per utente
 
 form.addEventListener('submit', function (event) {
@@ -57,21 +64,52 @@ form.addEventListener('submit', function (event) {
 
   //memorizzo l'eta' inserita dall'utente in una nuova variabile
   const userAge = parseInt(Math.round(ageInput.value));
-  console.log(userAge);
-
+  console.log(typeof userAge);
 
   //km inseriti dall'utente
   const userKm = parseFloat(Math.round(kmDistanceInput.value));
-  console.log(userKm);
+  //??? rimuovere parse float per inserire validazione. perche' cosi' i dati immessi vengono sempre trasformati automaticamente in tipo number, anche se stringhe
+  // console.log(typeof userKm);
 
   const outputPrice = getFinalPrice(userKm, userAge);
   console.log(outputPrice);
 
+
   ageInput.value = '';
   kmDistanceInput.value = '';
 
+
   //banner utente gia' posizionato in pagina ma vuoto
-  message.innerText = `Il prezzo per il biglietto è pari a ${outputPrice} €`;
+
+  if (userAge < 18) {
+    printDiscount.innerText = '20%';
+  } else if (userAge > 65) {
+    printDiscount.innerText = '40%';
+  } else {
+    printDiscount.innerText = '0';
+  }
+  printKm.innerText = userKm;
+  printAge.innerText = userAge;
+  printPrice.innerText = `${outputPrice} €`;
+
+  //*utilizzo append
+  // const message = document.createElement('div');
+
+  // messageSection.append(message);
+  // message.append(`Il prezzo calcolato è pari a: ${outputPrice}  € `);
+
+  // finalKmOutput.append(userKm);
+
+  // console.log(message);
+
+
+
+  // messageContainer.innerText = `Il prezzo del biglietto è pari a ${outputPrice}`;
+
+  // message.classList.add('text-center');
+  // message.innerText = ;
+  // console.log(message);
+
   // console.log('ciao');
   // console.log(userAge, userKm);
 });
